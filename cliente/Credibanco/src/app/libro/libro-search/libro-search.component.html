@@ -1,0 +1,50 @@
+<div class="form">
+    <h1 class="titulo_buscar">Buscar Libro</h1>
+    <form (ngSubmit)="buscar()" #createForm="ngForm">
+        <input id="titulo" type="text" name="titulo" placeholder="Título del Libro..." [(ngModel)]="libro.titulo" #txtTitulo="ngModel" />
+        <input id="anio" type="text" name="anio" placeholder="Año del Libro..." [(ngModel)]="libro.anio" #txtAnio="ngModel" />
+        <input id="genero" type="text" name="genero" placeholder="Género del Libro..." [(ngModel)]="libro.genero" #txtGenero="ngModel" />
+        <input id="paginas" type="text" name="paginas" placeholder="Número de páginas..." [(ngModel)]="libro.numero_paginas" #txtGenero="ngModel" />
+        <select id="editorial" name="editorial" [(ngModel)]="edito">
+            <option value="" hidden selected>Seleccionar Editorial...</option>
+            <option *ngFor="let editorial of editoriales">{{editorial.nombre}}</option>
+        </select>
+        <select id="autor" name="autor" [(ngModel)]="auto">
+            <option value="" hidden selected>Seleccionar Autor...</option>
+            <option *ngFor="let autor of autores">{{autor.nombre_completo}}</option>
+        </select>
+        <button classtype="submit">
+            Confirmar
+        </button>
+        <button (click)="regresar()">Regresar</button>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+</div>
+<div id="contenido">
+    <table class="tabla" *ngIf="libros.length > 0">
+        <thead class="encabezado">
+            <tr>
+                <th>Titulo</th>
+                <th>Autor</th>
+                <th>Editorial</th>
+                <th>Año</th>
+                <th>Genero</th>
+                <th>Número de páginas</th>
+            </tr>
+        </thead>
+        <tbody class="cuerpo">
+            <tr *ngFor="let libro of librosinf">
+                <td>{{ libro.titulo }}</td>
+                <td>{{ libro.autor }}</td>
+                <td>{{ libro.editorial }}</td>
+                <td>{{ libro.anio }}</td>
+                <td>{{ libro.genero }}</td>
+                <td>{{ libro.paginas }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1 id="mensaje-vacio" *ngIf="libros.length == 0">NO HAY LIBROS CON LAS ESPECIFICACIONES DADAS</h1>
+</div>
+<router-outlet></router-outlet>

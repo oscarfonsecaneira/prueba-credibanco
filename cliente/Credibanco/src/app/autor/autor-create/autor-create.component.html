@@ -1,0 +1,27 @@
+<div class="form">
+    <h1 class="titulo">Registrar Autor</h1>
+    <form (ngSubmit)="create()" #createForm="ngForm">
+        <div>
+            <input id="name" type="text" name="name" required placeholder="Nombre del Autor..." [(ngModel)]="autor.nombre_completo" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el nombre!
+            </div>
+        </div>
+        <div>
+            <input id="fecha" type="date" name="fecha" required placeholder="Fecha de Nacimiento..." [(ngModel)]="autor.fecha_nacimiento" #txtName="ngModel" />
+        </div>
+        <div>
+            <input id="ciudad" type="text" name="ciudad" required placeholder="Ciudad de Procedencia..." [(ngModel)]="autor.ciudad_procedencia" #txtName="ngModel" />
+        </div>
+        <div>
+            <input id="correo" type="email" name="correo" required placeholder="Correo del Autor..." [(ngModel)]="autor.correo" #txtName="ngModel" />
+        </div>
+        <button classtype="submit" [disabled]="!canSubmit">
+        Confirmar
+      </button>
+        <button (click)="cancel()">Cancelar</button>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+</div>

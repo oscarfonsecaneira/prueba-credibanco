@@ -1,0 +1,9 @@
+<h1 class="titulo">Sistema de Libros</h1>
+<div class="options" *ngIf="router.url === '/'">
+    <h1 class="titulo_opciones">Opciones</h1>
+    <button [routerLink]="['editorial/registro']">Registrar Editorial</button><br>
+    <button [routerLink]="['autor/registro']">Registrar Autor</button><br>
+    <button [routerLink]="['libro/registro']">Registrar Libro</button><br>
+    <button [routerLink]="['libro/busqueda']">Buscar Libro</button>
+</div>
+<router-outlet></router-outlet>

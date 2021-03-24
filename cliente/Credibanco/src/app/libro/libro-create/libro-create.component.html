@@ -1,0 +1,45 @@
+<div class="form">
+    <h1 class="titulo">Registrar Libro</h1>
+    <form (ngSubmit)="create()" #createForm="ngForm">
+        <div>
+            <input id="titulo" type="text" name="titulo" required placeholder="Título del Libro..." [(ngModel)]="libro.titulo" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el titulo!
+            </div>
+        </div>
+        <div>
+            <input id="anio" type="number" name="anio" required placeholder="Año de publicación..." [(ngModel)]="libro.anio" #txtName="ngModel" />
+        </div>
+        <div>
+            <input id="genero" type="text" name="genero" required placeholder="Género Literario..." [(ngModel)]="libro.genero" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el género!
+            </div>
+        </div>
+        <div>
+            <input id="paginas" type="number" name="paginas" required placeholder="Número de Páginas..." [(ngModel)]="libro.numero_paginas" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el número de páginas!
+            </div>
+        </div>
+        <div>
+            <input id="autor" type="number" name="autor" required placeholder="ID del Autor..." [(ngModel)]="libro.autor_id" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el ID del autor!
+            </div>
+        </div>
+        <div>
+            <input id="editorial" type="number" name="editorial" required placeholder="ID de la Editorial..." [(ngModel)]="libro.editorial_id" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el ID de la editorial!
+            </div>
+        </div>
+        <button classtype="submit" [disabled]="!canSubmit">
+        Confirmar
+      </button>
+        <button (click)="cancel()">Cancelar</button>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+</div>

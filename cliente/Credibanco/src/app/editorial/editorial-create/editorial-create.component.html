@@ -1,0 +1,36 @@
+<div class="form">
+    <h1 class="titulo">Registrar Editorial</h1>
+    <form (ngSubmit)="create()" #createForm="ngForm">
+        <div>
+            <input id="name" type="text" name="name" required placeholder="Nombre de la Editorial..." [(ngModel)]="editorial.nombre" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerido el nombre!
+            </div>
+        </div>
+        <div>
+            <input id="direccion" type="text" name="direccion" required placeholder="Dirección de Correspondencia..." [(ngModel)]="editorial.direccion" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerida la dirección de correspondencia
+            </div>
+        </div>
+        <div>
+            <input id="telefono" type="number" name="telefono" required placeholder="Teléfono de la Editorial..." [(ngModel)]="editorial.telefono" #txtName="ngModel" />
+            <div [hidden]="txtName.valid || !txtName.touched" class="alert alert-danger">
+                Es requerida el teléfono de la editorial
+            </div>
+        </div>
+        <div>
+            <input id="correo" type="email" name="correo" required placeholder="Correo de la Editorial..." [(ngModel)]="editorial.correo" #txtName="ngModel" />
+        </div>
+        <div>
+            <input id="maxlibros" type="number" name="maxlibros" required placeholder="Número máximo de libros..." [(ngModel)]="editorial.max_libros" #txtName="ngModel" />
+        </div>
+        <button classtype="submit" [disabled]="!canSubmit">
+        Confirmar
+      </button>
+        <button (click)="cancel()">Cancelar</button>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+</div>
